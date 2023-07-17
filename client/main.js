@@ -35,7 +35,7 @@ function createSongCard(song) {
     const songCard = document.createElement('div')
     songCard.classList.add('song-card')
 
-    songCard.innerHTML = `<p class="song-name">${song.title}</p><p class="artist-name">${song.artist}</p>
+    songCard.innerHTML = `<p class="song-name">Title: ${song.title}</p><p class="artist-name">Artist: ${song.artist}</p>
     <div class="btns-container">
         <button onclick="updateSong(${song.id}, 'minus')">-</button>
         <p class="song-rating">${song.rating} stars</p>
