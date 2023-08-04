@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Songs List</title>
+    <title>Foods List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Song List</h1>
+    <h1>Restaurant Rating List</h1>
 </header>
 <main>
 
@@ -17,13 +17,13 @@
     <input 
         type='text'
         id="title"
-        placeholder="What's the song's title?"/>
+        placeholder="What's the dish name?"/>
     <input 
         type='text'
         id="artist"
-        placeholder="What's the artist's name?"/>
+        placeholder="What's the restaurant's name?"/>
     <section id="ratings-container">
-        <p>Rate the song:</p>
+        <p>Rate your favorite dishes:</p>
         <div id="radio-container">
             <label for="one">
                 <input
@@ -67,10 +67,10 @@
             </label>
         </div>
     </section>
-    <button>add song</button>
+    <button>Add a dish!</button>
 </form>
 
-<section id="songs-container"></section>
+<section id="foods-container"></section>
 
 </main>
 
@@ -78,9 +78,9 @@
     <title>Back End Assessment</title>
   </head>
 
-    <button class="assess" id="complimentButton">Get a compliment</button>
-    <button class="assess" id="fortuneButton">Get a fortune</button>
-    <button class="assess" id="monthButton">Get a month</button>
+    <button class="assess" id="restaurantButton">Get a restaurant</button>
+    <button class="assess" id="dishButton">Get a dish</button>
+    <!-- <button class="assess" id="monthButton">Get a month</button> -->
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>

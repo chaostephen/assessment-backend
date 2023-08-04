@@ -1,16 +1,16 @@
-const songsContainer = document.querySelector('#songs-container')
+const foodsContainer = document.querySelector('#foods-container')
 const form = document.querySelector('form')
 
-const baseURL='http://localhost:4000/api/songs'
+const baseURL='http://localhost:4000/api/foods'
 
-const songsCallback = ({data:songs})=> displaySongs(songs)
+const foodsCallback = ({data:foods})=> displayFoods(foods)
 
 const errCallback = err=>console.log(err.response.data)
 
-const getAllSongs=()=>axios.get(baseURL).then(songsCallback).catch(errCallback)
-const addSong=body=>axios.post(baseURL,body).then(songsCallback).catch(errCallback)
-const deleteSong=id=>axios.delete(`${baseURL}/${id}`).then(songsCallback).catch(errCallback)
-const updateSong=(id,type)=>axios.put(`${baseURL}/${id}`,{type}).then(songsCallback).catch(errCallback)
+const getAllFoods=()=>axios.get(baseURL).then(foodsCallback).catch(errCallback)
+const addFood=body=>axios.post(baseURL,body).then(foodsCallback).catch(errCallback)
+const deleteFood=id=>axios.delete(`${baseURL}/${id}`).then(foodsCallback).catch(errCallback)
+const updateFood=(id,type)=>axios.put(`${baseURL}/${id}`,{type}).then(foodsCallback).catch(errCallback)
 
 function submitHandler(e){
     e.preventDefault()
@@ -24,39 +24,39 @@ function submitHandler(e){
         artist:artist.value,
         rating:rating.value
     }
-    addSong(bodyObj)
+    addFood(bodyObj)
 
     title.value=''
     rating.checked=false
     artist.value=''
 }
 
-function createSongCard(song) {
-    const songCard = document.createElement('div')
-    songCard.classList.add('song-card')
+function createFoodCard(food) {
+    const foodCard = document.createElement('div')
+    foodCard.classList.add('food-card')
 
-    songCard.innerHTML = `<p class="song-name">Title: ${song.title}</p><p class="artist-name">Artist: ${song.artist}</p>
+    foodCard.innerHTML = `<p class="food-name">Food: ${food.title}</p><p class="artist-name">Place: ${food.artist}</p>
     <div class="btns-container">
-        <button onclick="updateSong(${song.id}, 'minus')">-</button>
-        <p class="song-rating">${song.rating} stars</p>
-        <button onclick="updateSong(${song.id}, 'plus')">+</button>
+        <button onclick="updateFood(${food.id}, 'minus')">-</button>
+        <p class="food-rating">${food.rating} stars</p>
+        <button onclick="updateFood(${food.id}, 'plus')">+</button>
     </div>
-    <button onclick="deleteSong(${song.id})">delete</button>
+    <button onclick="deleteFood(${food.id})">delete</button>
     `
-    songsContainer.appendChild(songCard)
+    foodsContainer.appendChild(foodCard)
 }
 
-function displaySongs(arr) {
-    songsContainer.innerHTML = ``
+function displayFoods(arr) {
+    foodsContainer.innerHTML = ``
     for (let i = 0; i < arr.length; i++) {
-        createSongCard(arr[i])
+        createFoodCard(arr[i])
     }
 }
 
-const complimentBtn = document.getElementById("complimentButton")
-const fortuneBtn=document.getElementById("fortuneButton")
-const monthBtn=document.getElementById("monthButton")
-const songBtn=document.getElementById("songButton")
+const restaurantBtn = document.getElementById("restaurantButton")
+const dishBtn=document.getElementById("dishButton")
+// const monthBtn=document.getElementById("monthButton")
+const foodBtn=document.getElementById("foodButton")
 
 
 
@@ -64,30 +64,30 @@ const songBtn=document.getElementById("songButton")
 
 
 form.addEventListener('submit',submitHandler)
-getAllSongs()
+getAllFoods()
 
 
-const getCompliment = () => {
-    axios.get("http://localhost:4000/api/compliment/")
+const getRestaurant = () => {
+    axios.get("http://localhost:4000/api/restaurant/")
         .then(res => {
             const data = res.data;
             alert(data);
     });
 };
 
-const getFortune = () => {
-    axios.get("http://localhost:4000/api/fortune/")
+const getDish = () => {
+    axios.get("http://localhost:4000/api/dish/")
         .then(res => {
             const data = res.data;
             alert(data);
     });
 };
-const getMonth=()=>{
-    axios.get("http://localhost:4000/api/month/").then(res=>{
-        const data=res.data;
-        alert(data);
-    })
-}
-complimentBtn.addEventListener('click', getCompliment)
-fortuneBtn.addEventListener('click',getFortune)
-monthBtn.addEventListener('click',getMonth)
+// const getMonth=()=>{
+//     axios.get("http://localhost:4000/api/month/").then(res=>{
+//         const data=res.data;
+//         alert(data);
+//     })
+// }
+restaurantBtn.addEventListener('click', getRestaurant)
+dishBtn.addEventListener('click',getDish)
+// monthBtn.addEventListener('click',getMonth)

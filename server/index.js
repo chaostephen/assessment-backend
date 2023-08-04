@@ -7,15 +7,15 @@ app.use(cors());
 
 app.use(express.json());
 
-const { getCompliment, getFortune, getMonth, getSongs,updateSong, deleteSong, addSong } = require('./controller')
+const { getRestaurant, getDish, getFoods,updateFood, deleteFood, addFood } = require('./controller')
 
 
-app.get("/api/compliment", getCompliment);
-app.get("/api/fortune", getFortune);
-app.get("/api/month",getMonth)
-app.get(`/api/songs`, getSongs)
-app.delete(`/api/songs/:id`, deleteSong)
-app.post(`/api/songs`, addSong)
-app.put(`/api/songs/:id`, updateSong)
+app.get("/api/restaurant", getRestaurant);
+app.get("/api/dish", getDish);
+// app.get("/api/month",getMonth)
+app.get(`/api/foods`, getFoods)
+app.delete(`/api/foods/:id`, deleteFood)
+app.post(`/api/foods`, addFood)
+app.put(`/api/foods/:id`, updateFood)
 
 app.listen(4000, () => {console.log("Server running on 4000")});
